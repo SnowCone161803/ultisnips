@@ -1,4 +1,6 @@
 language: python
+dist: trusty
+sudo: required
 
 python:
   - 2.7
@@ -7,14 +9,11 @@ python:
 env:
   - VIM_VERSION="74"
   - VIM_VERSION="git"
-  # - VIM_VERSION="NEOVIM"
 
 install:
    # Some of these commands fail transiently. We keep retrying them until they succeed.
    - until sudo add-apt-repository ppa:kalakris/tmux -y; do sleep 10; done
-   - until sudo add-apt-repository ppa:neovim-ppa/unstable -y; do sleep 10; done
    - until sudo apt-get update -qq; do sleep 10; done
-   - until sudo apt-get install -qq -y --force-yes tmux xclip gdb neovim git; do sleep 10; done
    - ./travis_install.sh
 
 script:
