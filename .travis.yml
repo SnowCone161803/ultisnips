@@ -11,9 +11,6 @@ env:
   - VIM_VERSION="git"
 
 install:
-   # Some of these commands fail transiently. We keep retrying them until they succeed.
-   - until sudo add-apt-repository ppa:kalakris/tmux -y; do sleep 10; done
-   - until sudo apt-get update -qq; do sleep 10; done
    - ./travis_install.sh
 
 script:
